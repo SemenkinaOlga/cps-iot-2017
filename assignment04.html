@@ -1,0 +1,146 @@
+<!doctype html>
+<meta character = utf8>
+<html>
+    
+<head>
+    <title>Example with buttons</title>
+</head>
+    
+    <body>
+        <button id="buttonOnGreen" style="width: 150px;" onClick="onGreen()">On green led</button>
+        <button id="buttonOffGreen" style="width: 150px;" onClick="offGreen()">Off green led</button>
+        <br>
+        <button id="blinkButtonOnGreen" style="width: 150px;" onClick="blinkOnGreen()">On green timer led</button>
+        <button id="blinkButtonOffGreen" style="width: 150px;" onClick="blinkOffGreen()">Off green timer led</button>
+        <br>
+        <br>
+        
+        <button id="buttonOnYellow" style="width: 150px;" onClick="onYellow()">On yellow led</button>
+        <button id="buttonOffYellow" style="width: 150px;" onClick="offYellow()">Off yellow led</button>
+        <br>
+        <button id="blinkButtonOnYellow" style="width: 150px;" onClick="blinkOnYellow()">On yellow timer led</button>
+        <button id="blinkButtonOffYellow" style="width: 150px;" onClick="blinkOffYellow()">Off yellow timer led</button>
+        <br>
+        <br>
+        
+        <button id="buttonOnRed" style="width: 150px;" onClick="onRed()">On red led</button>
+        <button id="buttonOffRed" style="width: 150px;" onClick="offRed()">Off red led</button>
+        <br>
+        <button id="blinkButtonOnRed" style="width: 150px;" onClick="blinkOnRed()">On red timer led</button>
+        <button id="blinkButtonOffRed" style="width: 150px;" onClick="blinkOffRed()">Off red timer led</button>
+        <br>
+        <br>
+        
+        <button id="buttonOnBlue" style="width: 150px;" onClick="onBlue()">On  blue led</button>
+        <button id="buttonOffBlue" style="width: 150px;" onClick="offBlue()">Off  blue led</button>
+        <br>
+        <button id="blinkButtonOnBlue" style="width: 150px;" onClick="blinkOnBlue()">On blue timer led</button>
+        <button id="blinkButtonOffBlue" style="width: 150px;" onClick="blinkOffBlue()">Off blue timer led</button>
+        <br>
+        <br>
+        
+        <button id="buttonOnAll" style="width: 150px;" onClick="onAll()">On all leds</button>
+        <button id="buttonOffAll" style="width: 150px;" onClick="offAll()">Off all leds</button>
+        <br>
+        <button id="blinkButtonOnAll" style="width: 150px;" onClick="blinkOnAll()">On all timer leds</button>
+        <button id="blinkButtonOffAll" style="width: 150px;" onClick="blinkOffAll()">Off all timer leds</button>
+        <br>
+        <br>
+    </body>
+    
+    <br>
+    
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    
+    <script type="text/javascript">
+        var socket = io.connect("172.16.22.28:8080"); // create socket - connect to it
+ 
+        function onGreen() {
+            socket.emit("commandToArduino", 1);
+        }
+        
+        function offGreen() {
+            socket.emit("commandToArduino", 0);
+        }
+        
+        function onBlue () {
+            socket.emit("commandToArduino", 3);
+        }
+        
+        function offBlue () {
+            socket.emit("commandToArduino", 2);
+        }
+        
+ 
+        function onYellow() {
+            socket.emit("commandToArduino", 5);
+        }
+        
+        function offYellow() {
+            socket.emit("commandToArduino", 4);
+        }
+        
+        function onRed () {
+            socket.emit("commandToArduino", 7);
+        }
+        
+        function offRed () {
+            socket.emit("commandToArduino", 6);
+        }
+        
+        function onAll () {
+            socket.emit("commandToArduino", 9);
+        }
+        
+        function offAll () {
+            socket.emit("commandToArduino", 8);
+        }
+        
+
+        function blinkOnGreen () {
+            socket.emit("blinkOnGreen");
+        }
+        
+        function blinkOffGreen () {
+            socket.emit("blinkOffGreen");
+        }
+        
+
+        function blinkOnBlue () {
+            socket.emit("blinkOnBlue");
+        }
+        
+        function blinkOffBlue() {
+            socket.emit("blinkOffBlue");
+        }
+        
+
+        function blinkOnYellow () {
+            socket.emit("blinkOnYellow");
+        }
+        
+        function blinkOffYellow() {
+            socket.emit("blinkOffYellow");
+        }
+        
+
+        function blinkOnRed () {
+            socket.emit("blinkOnRed");
+        }
+        
+        function blinkOffRed() {
+            socket.emit("blinkOffRed");
+        }
+        
+
+        function blinkOnAll () {
+            socket.emit("blinkOnAll");
+        }
+        
+        function blinkOffAll() {
+            socket.emit("blinkOffAll");
+        }
+        
+    </script>
+    
+</html>

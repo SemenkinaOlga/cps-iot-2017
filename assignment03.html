@@ -1,0 +1,66 @@
+<!doctype html>
+<meta character = utf8>
+<html>
+    
+<head>
+    <title>Example with buttons</title>
+</head>
+    
+    <body>
+        <button id="buttonOnGreen" onClick="onGreen()">On green led</button>
+        <button id="buttonOffGreen" onClick="offGreen()">Off green led</button>
+        <br>
+        <button id="blinkButtonOnGreen" onClick="blinkOnGreen()">On green timer led</button>
+        <button id="blinkButtonOffGreen" onClick="blinkOffGreen()">Off green timer led</button>
+        <br>
+        <button id="buttonOnBlue" onClick="onBlue()">On  blue led</button>
+        <button id="buttonOffBlue" onClick="offBlue()">Off  blue led</button>
+        <br>
+        <button id="blinkButtonOnBlue" onClick="blinkOnBlue()">On  blue timer led</button>
+        <button id="blinkButtonOffBlue" onClick="blinkOffBlue()">Off  blue timer led</button>
+    </body>
+    
+    <br>
+    
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    
+    <script type="text/javascript">
+        var socket = io.connect("172.16.22.28:8080"); // create socket - connect to it
+ 
+        function onGreen() {
+            socket.emit("commandToArduino", 1);
+        }
+        
+        function offGreen() {
+            socket.emit("commandToArduino", 0);
+        }
+        
+        function onBlue () {
+            socket.emit("commandToArduino", 3);
+        }
+        
+        function offBlue () {
+            socket.emit("commandToArduino", 2);
+        }
+        
+
+        function blinkOnGreen () {
+            socket.emit("blinkOnGreen");
+        }
+        
+        function blinkOffGreen () {
+            socket.emit("blinkOffGreen");
+        }
+        
+
+        function blinkOnBlue () {
+            socket.emit("blinkOnBlue");
+        }
+        
+        function blinkOffBlue() {
+            socket.emit("blinkOffBlue");
+        }
+        
+    </script>
+    
+</html>
