@@ -1,0 +1,47 @@
+<!doctype html>
+<meta character = utf8>
+<html>
+    
+<head>
+    <title>Example with buttons</title>
+</head>
+    
+    <body>
+        <canvas id="rectangle" width="400" height="200" style="border:1px dashed #00c3c3">
+            <p>Ваш браузер не поддерживает рисование.</p>
+        </canvas>
+        <div id="print1"></div>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        
+        <script type="text/javascript">
+        "use strict";
+        
+        var drawingCanvas = document.getElementById('rectangle');
+        var context = drawingCanvas.getContext('2d');
+        
+        var divElement = document.getElementById("print1"); // var for div element
+    
+        function log(msg){
+            divElement.innerHTML += "<div>" + msg + "</div>"; // print to div
+        }
+    
+        var socket = io.connect("172.16.22.28:8080"); // create socket - connect to it
+        
+        socket.on("massageToClient", function (msg){
+           log(msg); // adding message to div
+           if(msg == 1){
+               context.fillStyle = "red";
+               context.fillRect(0, 0, 400, 200);
+           }
+           if(msg == 0){
+               context.fillStyle = "green";
+               context.fillRect(0, 0, 400, 200);
+           }
+        });
+        </script>
+ 
+    </body>
+    
+    <br>
+    
+</html>
