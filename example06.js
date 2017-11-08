@@ -16,7 +16,7 @@ var board = new firmata.Board("/dev/ttyACM0", function(){ // ACM Abstract Contro
 });
 
 function handler(req, res){
-    fs.readFile(__dirname + "/assignment04.html",
+    fs.readFile(__dirname + "/example06.html",
     function(err, data){
         if(err){
             res.writeHead(500, {"Content-Type": "text/plain"});
@@ -37,8 +37,6 @@ var timerYellowOn;
 var timerYellowOff;
 var timerRedOn;
 var timerRedOff;
-var timerAllOn;
-var timerAllOff;
 
 io.sockets.on("connection", function(socket) {
     socket.on("commandToArduino", function(commandNo){
@@ -129,7 +127,7 @@ io.sockets.on("connection", function(socket) {
         board.digitalWrite(10, board.HIGH); // write high on pin 8
         timerRedOn = setInterval(function blink() {
             board.digitalWrite(10, board.HIGH);
-            timerRedOff = se tTimeout(function () {board.digitalWrite(10, board.LOW);}, 1000);
+            timerRedOff = setTimeout(function () {board.digitalWrite(10, board.LOW);}, 1000);
             return blink;
         }(), 1500);
     });

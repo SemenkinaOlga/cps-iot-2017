@@ -1,0 +1,34 @@
+<!doctype html>
+<meta character = utf8>
+<html>
+    
+<head>
+    <title>Example with buttons</title>
+</head>
+    
+    <body>
+       
+        <div id="print1"></div>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        
+        <script type="text/javascript">
+        "use strict";
+        
+        var divElement = document.getElementById("print1"); // var for div element
+    
+        function log(msg){
+            divElement.innerHTML += "<div>" + msg + "</div>"; // print to div
+        }
+    
+        var socket = io.connect("172.16.22.28:8080"); // create socket - connect to it
+        
+        socket.on("massageToClient", function (msg){
+           log(msg); // adding message to div
+        });
+        </script>
+ 
+    </body>
+    
+    <br>
+    
+</html>
