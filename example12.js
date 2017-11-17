@@ -26,7 +26,7 @@ function handler(req, res){
     });
 }
 
-    http.listen(8080); // server will listen on port 8080
+http.listen(8080); // server will listen on port 8080
     
 board.on("ready", function ()
 {
