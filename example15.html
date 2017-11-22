@@ -83,7 +83,7 @@ function load() { // function that is started, when we open the page
     };
 };
 
-var socket = io.connect("172.16.22.28:8080"); // connect via socket
+var socket = io.connect("172.16.22.239:8080"); // connect via socket
 
 socket.on("messageToClient", function (msg) {
     log(msg); // adding message to div
